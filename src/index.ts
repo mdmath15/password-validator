@@ -1,6 +1,7 @@
 const MIN_LENGTH = 16
 const MAX_LENGTH = 32
 const SPECIAL_CHARACTERES = '!@#$%^&*)(+=._-'
+const NUMBERS = '0123456789'
 
 export type Response = {
   result: boolean
@@ -12,7 +13,7 @@ export const passwordValidator = (password: string): Response => {
     result: false,
     errors: []
   }
-  
+
   if (password.length < MIN_LENGTH) {
     response.errors.push('Password is too short')
   }
@@ -45,7 +46,7 @@ export const passwordValidator = (password: string): Response => {
 const lowerCaseValidator = (password: string): boolean => {
   let hasLowerCase = false
   password.split('').forEach((char) => {
-    if (SPECIAL_CHARACTERES.includes(char)) {
+    if (SPECIAL_CHARACTERES.includes(char) || NUMBERS.includes(char)) {
       return true
     }
     if (char.toLowerCase() == char) {
@@ -58,7 +59,7 @@ const lowerCaseValidator = (password: string): boolean => {
 const upperCaseValidator = (password: string): boolean => {
   let hasUpperCase = false
   password.split('').forEach((char) => {
-    if (SPECIAL_CHARACTERES.includes(char)) {
+    if (SPECIAL_CHARACTERES.includes(char) || NUMBERS.includes(char)) {
       return true
     }
     if (char.toUpperCase() === char) {
@@ -96,5 +97,3 @@ const sequenceValidator = (password: string): boolean => {
 
   return true
 }
-
-console.log(sequenceValidator('@D0w4ab123di3fMatheusRib'))
