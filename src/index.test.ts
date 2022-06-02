@@ -60,7 +60,7 @@ describe('PasswordValidator', () => {
 
   test('Should throws if the password have a sequence of letters', () => {
     const error = 'Password must not contain sequence'
-    sut = passwordValidator('abc_password!VALUE1234567')
+    sut = passwordValidator('abC_password!VALUE1234567')
     const { result, errors } = sut
     expect(result).toEqual(false)
     expect(errors).toEqual([error])

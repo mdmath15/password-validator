@@ -86,10 +86,12 @@ const sequenceValidator = (password: string): boolean => {
     }
   }
 
-  for (let i = 0; i < password.length; i++) {
+  const passwordUpperCase = password.toUpperCase()
+
+  for (let i = 0; i < passwordUpperCase.length; i++) {
     if (
-      String.fromCharCode(password.charCodeAt(i) + 1) === password[i + 1] &&
-      String.fromCharCode(password.charCodeAt(i) + 2) === password[i + 2]
+      String.fromCharCode(passwordUpperCase.charCodeAt(i) + 1) === passwordUpperCase[i + 1] &&
+      String.fromCharCode(passwordUpperCase.charCodeAt(i) + 2) === passwordUpperCase[i + 2]
     ) {
       return false
     }
